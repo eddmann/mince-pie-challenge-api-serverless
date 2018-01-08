@@ -1,0 +1,9 @@
+- Effect: Allow
+  Action:
+    - dynamodb:*
+  Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.tableName}'
+
+- Effect: Allow
+  Action:
+    - s3:*
+  Resource: 'arn:aws:s3:::${self:custom.photo.bucket}/*'

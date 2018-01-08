@@ -1,0 +1,69 @@
+bootstrap:
+  handler: src/bootstrap.bootstrap
+  environment:
+    USER_POOL_CLIENT_ID:
+      'Ref': PieUserPoolClient
+  events:
+    - http:
+        path: /
+        method: get
+        cors: true
+
+list-pies:
+  handler: src/list.list
+  events:
+    - http:
+        path: /pies
+        method: get
+        cors: true
+
+add-pie:
+  handler: src/add.add
+  events:
+    - http:
+        path: /pies
+        method: post
+        cors: true
+
+view-pie:
+  handler: src/view.view
+  events:
+    - http:
+        path: /pies/{id}
+        method: get
+        cors: true
+
+remove-pie:
+  handler: src/remove.remove
+  events:
+    - http:
+        path: /pies/{id}
+        method: delete
+        cors: true
+
+rate-pie:
+  handler: src/rate.rate
+  events:
+    - http:
+        path: /pies/{id}/rate
+        method: put
+        cors: true
+
+photo-upload:
+  handler: src/photoUpload.photoUpload
+  environment:
+    PHOTO_BUCKET_NAME: ${self:custom.photo.bucket}
+    PHOTO_UPLOAD_PATH: ${self:custom.photo.uploadPath}
+  events:
+    - http:
+        path: /pies/{id}/photo
+        method: put
+        cors: true
+
+photo-thumbnail:
+  handler: src/photoThumbnail.photoThumbnail
+  environment:
+    PHOTO_THUMBNAIL_PATH: ${self:custom.photo.thumbnailPath}
+    PHOTO_THUMBNAIL_SIZE: ${self:custom.photo.thumbnailSize}
+  events:
+    # handled by S3 event trigger defined in `resources.yml`

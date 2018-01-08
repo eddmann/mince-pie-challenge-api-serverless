@@ -1,0 +1,10 @@
+{
+  "body": "{\"name\":\"Super Awesome Mince Pie\"}",
+  "requestContext": {
+    "authorizer": {
+      "claims": {
+        "sub": "Sample-User-Id"
+      }
+    }
+  }
+}

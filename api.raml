@@ -1,0 +1,298 @@
+#%RAML 1.0
+title: mince-pie-challenge-api
+version: 1
+baseUri: https://api.mincepiechallenge.com
+mediaType:
+  - application/hal+json
+  - application/problem+json
+protocols: https
+
+securitySchemes:
+  optional-auth:
+    description: Optionally provide a JSON Web Token for 'user-aware' responses.
+    type: x-jwt
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send a valid JSON Web Token with the request.
+          type: string
+          required: false
+      responses:
+        403:
+          body:
+            application/problem+json:
+              type: object
+              example: |
+                {
+                  "title": "Forbidden",
+                  "detail": "Service requires authenticated user"
+                }
+  strict-auth:
+    description: Requires a valid JSON Web Token to be provided with the request.
+    type: x-jwt
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send a valid JSON Web Token with the request.
+          type: string
+      responses:
+        403:
+          body:
+            application/problem+json:
+              type: object
+              example: |
+                {
+                  "title": "Forbidden",
+                  "detail": "Service requires authenticated user"
+                }
+
+/:
+  get:
+    description: |
+      Bootstrap, providing common URL's and Cognito authentication pool identifiers required.
+    securedBy: optional-auth
+    responses:
+      200:
+        body:
+          application/hal+json:
+            example: |
+              {
+                "_links": {
+                  "self": { "href": "/" },
+                  "list": { "href": "/pies" },
+                  "add": { "href": "/pies" },
+                  "view": {
+                    "href": "/pies/{id}",
+                    "templated": true
+                  }
+                },
+                "cognito": {
+                  "poolId": "eu-west-1_BXSROsWOu",
+                  "clientId": "3qf6rqo462hr1tcbm3kf5sn2v3"
+                },
+                "baseEndpointUrl": "https://api.mincepiechallenge.com"
+              }
+
+/pies:
+  get:
+    description: List all available mince pie's in the challenge.
+    securedBy: optional-auth
+    responses:
+      200:
+        body:
+          application/hal+json:
+            type: object
+            example: |
+              {
+                "_links": {
+                  "self": { "href": "/pies" }
+                },
+                "_embedded": {
+                  "pies": [
+                    {
+                      "_links": {
+                        "self": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2" }
+                      },
+                      "id": "9d197f40-e0f6-11e7-a237-bb7ddfe79db2",
+                      "name": "Awesome Mince Pie",
+                      "thumbnail": "http://example.com/9d197f40-e0f6-11e7-a237-bb7ddfe79db2.png",
+                      "rating": {
+                        "avg": 5,
+                        "total": 1
+                      }
+                    }
+                  ]
+                },
+                "total": 1
+              }
+  post:
+    description: Add a new mince pie to the challenge.
+    securedBy: strict-auth
+    body:
+      application/json:
+        type: object
+        example: |
+          {
+            "name": "Awesome Mince Pie"
+          }
+    responses:
+      201:
+        headers:
+          Location:
+            type: string
+            example: "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2"
+        body:
+          application/hal+json:
+            type: object
+            example: |
+              {
+                "_links": {
+                  "self": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2" },
+                  "photo": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2/photo" }
+                },
+                "id": "9d197f40-e0f6-11e7-a237-bb7ddfe79db2",
+                "name": "Awesome Mince Pie",
+                "addedAt": "2017-12-10T15:47:21.878Z",
+                "rating": {
+                  "avg": 0,
+                  "total": 0
+                }
+              }
+      400:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Bad Request",
+                "detail": "Invalid request body",
+                "errors": [
+                  { "name": "name", "reason": "You must supply the pie's name." }
+                ]
+              }
+
+/pies/{id}:
+  get:
+    description: View the specified mince pie.
+    securedBy: optional-auth
+    responses:
+      200:
+        body:
+          application/hal+json:
+            type: object
+            example: |
+              {
+                "_links": {
+                  "self": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2" },
+                  "rate": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2/rate" },
+                  "remove": { "href": "/pies/9d197f40-e0f6-11e7-a237-bb7ddfe79db2" }
+                },
+                "id": "9d197f40-e0f6-11e7-a237-bb7ddfe79db2",
+                "name": "Awesome Mince Pie",
+                "addedAt": "2017-12-10T15:47:21.878Z",
+                "thumbnail": "http://example.com/9d197f40-e0f6-11e7-a237-bb7ddfe79db2.png",
+                "rating": {
+                  "avg": 0,
+                  "total": 0
+                }
+              }
+      404:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Not Found",
+                "detail": "Unable to find the specified mince pie."
+              }
+  delete:
+    description: Remove the specified mince pie from the challenge.
+    securedBy: strict-auth
+    responses:
+      204:
+        description: Successfully deleted the mince pie.
+      401:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Unauthorized",
+                "detail": "This mince pie does not belong to you."
+              }
+      404:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Not Found",
+                "detail": "Unable to find the specified mince pie."
+              }
+
+/pies/{id}/rate:
+  put:
+    description: Rate the given mince pie.
+    securedBy: strict-auth
+    body:
+      application/json:
+        type: object
+        example: |
+          {
+            "rating": 5
+          }
+    responses:
+      204:
+        description: Successfully rated the mince pie.
+      400:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Bad Request",
+                "detail": "Invalid request body",
+                "errors": [
+                  { "name": "rating", "reason": "You must supply a valid pie rating." }
+                ]
+              }
+      404:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Not Found",
+                "detail": "Unable to find the specified mince pie."
+              }
+
+/pies/{id}/photo:
+  put:
+    description: Request a new photo upload URL.
+    securedBy: strict-auth
+    body:
+      application/json:
+        type: object
+        example: |
+          {
+            "fileExtension": "jpg",
+            "contentType": "image/jpg"
+          }
+    responses:
+      201:
+        headers:
+          Location:
+            type: string
+            example: "http://example.com/upload?filename=9d197f40-e0f6-11e7-a237-bb7ddfe79db2.png"
+        body:
+          application/hal+json:
+            type: object
+            example: |
+              {
+                "_links": {
+                  "self": { "href": "http://example.com/upload?filename=9d197f40-e0f6-11e7-a237-bb7ddfe79db2.png" }
+                },
+                "url": "http://example.com/upload?filename=9d197f40-e0f6-11e7-a237-bb7ddfe79db2.png"
+              }
+      400:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Bad Request",
+                "detail": "Invalid request body",
+                "errors": [
+                  { "name": "fileExtension", "reason": "You must supply the file extension." },
+                  { "name": "contentType", "reason": "You must supply the content-type." }
+                ]
+              }
+      404:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Not Found",
+                "detail": "Unable to find the specified mince pie."
+              }

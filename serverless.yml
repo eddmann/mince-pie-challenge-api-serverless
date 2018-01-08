@@ -1,0 +1,40 @@
+service: mince-pie-challenge-api
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: prod
+  region: eu-west-1
+  environment:
+    USER_POOL_NAME:
+      'Fn::GetAtt': [ PieUserPool, ProviderName ]
+    TABLE_NAME: ${self:custom.tableName}
+  iamRoleStatements: ${file(./roles.yml)}
+
+custom:
+  tableName: mince-pie-challenge
+  userPoolName: mince-pie-challenge
+  photo:
+    bucket: mince-pie-challenge-photos
+    uploadPath: uploads
+    thumbnailPath: thumbnails
+    thumbnailSize: '266x221'
+
+  # plugins
+  webpackIncludeModules: true
+  customDomain:
+    domainName: 'api.mincepiechallenge.com'
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+
+plugins:
+  - serverless-webpack
+  - serverless-domain-manager
+
+package:
+  individually: true
+
+resources: ${file(./resources.yml)}
+
+functions: ${file(./functions.yml)}

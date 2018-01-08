@@ -1,0 +1,76 @@
+Resources:
+  PieTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.tableName}
+      AttributeDefinitions:
+        - AttributeName: Id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+  PieUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: ${self:custom.userPoolName}-pool
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 6
+      AliasAttributes:
+        - email
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+
+  PieUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: ${self:custom.userPoolName}-client
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: false
+      UserPoolId:
+        Ref: PieUserPool
+
+  PiePhotoBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:custom.photo.bucket}
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: 's3:ObjectCreated:*'
+            Function:
+              'Fn::GetAtt': [ PhotoDashthumbnailLambdaFunction, Arn ]
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: ${self:custom.photo.uploadPath}/
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+              - PUT
+            AllowedOrigins:
+              - '*'
+
+  PiePhotoBucketThumbnailLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName:
+        'Fn::GetAtt': [ PhotoDashthumbnailLambdaFunction, Arn ]
+      Action: 'lambda:InvokeFunction'
+      Principal: s3.amazonaws.com
+      SourceAccount:
+        Ref: AWS::AccountId
+      SourceArn: 'arn:aws:s3:::${self:custom.photo.bucket}'
