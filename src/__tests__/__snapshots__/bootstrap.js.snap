@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays bootstrap details 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/\\"},\\"list\\":{\\"href\\":\\"/pies\\"},\\"add\\":{\\"href\\":\\"/pies\\"},\\"view\\":{\\"href\\":\\"/pies/{id}\\",\\"templated\\":true}},\\"cognito\\":{\\"clientId\\":\\"CLIENT_ID\\"},\\"baseEndpointUrl\\":\\"https://base.url\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+  },
+  "statusCode": 200,
+}
+`;
