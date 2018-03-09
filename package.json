@@ -1,30 +1,38 @@
 {
   "name": "mince-pie-challenge-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "handler.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
-    "aws-sdk": "^2.161.0",
+    "aws-sdk": "^2.205.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-jest": "^22.4.1",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-flow-comments": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "serverless-domain-manager": "^1.1.24",
-    "serverless-webpack": "^4.1.0",
-    "webpack": "^3.9.1",
+    "flow-aws-lambda": "^1.0.2",
+    "flow-babel-webpack-plugin": "^1.1.1",
+    "flow-bin": "^0.66.0",
+    "jest": "^22.4.2",
+    "prettier": "^1.11.1",
+    "serverless-domain-manager": "^1.1.25",
+    "serverless-webpack": "^4.4.0",
+    "webpack": "^3.11.0",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "cognito-express": "^2.0.5",
-    "gm": "^1.23.0",
+    "cognito-express": "^2.0.8",
+    "gm": "^1.23.1",
     "hal": "^1.2.0",
-    "uuid": "^3.1.0"
+    "uuid": "^3.2.1"
+  },
+  "scripts": {
+    "flow": "flow",
+    "test": "jest"
+  },
+  "jest": {
+    "rootDir": "./src",
+    "cacheDirectory": "./node_modules/.cache/jest"
   }
 }

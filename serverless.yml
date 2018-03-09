@@ -12,6 +12,7 @@ provider:
   iamRoleStatements: ${file(./roles.yml)}
 
 custom:
+  baseEndpointUrl: 'https://api.mincepiechallenge.com'
   tableName: mince-pie-challenge
   userPoolName: mince-pie-challenge
   photo:

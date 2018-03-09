@@ -1,8 +1,10 @@
 bootstrap:
-  handler: src/bootstrap.bootstrap
+  handler: src/bootstrap.handler
   environment:
     USER_POOL_CLIENT_ID:
       'Ref': PieUserPoolClient
+    BASE_ENDPOINT_URL:
+      ${self:custom.baseEndpointUrl}
   events:
     - http:
         path: /
@@ -10,7 +12,7 @@ bootstrap:
         cors: true
 
 list-pies:
-  handler: src/list.list
+  handler: src/list.handler
   events:
     - http:
         path: /pies
@@ -18,7 +20,7 @@ list-pies:
         cors: true
 
 add-pie:
-  handler: src/add.add
+  handler: src/add.handler
   events:
     - http:
         path: /pies
@@ -26,7 +28,7 @@ add-pie:
         cors: true
 
 view-pie:
-  handler: src/view.view
+  handler: src/view.handler
   events:
     - http:
         path: /pies/{id}
@@ -34,7 +36,7 @@ view-pie:
         cors: true
 
 remove-pie:
-  handler: src/remove.remove
+  handler: src/remove.handler
   events:
     - http:
         path: /pies/{id}
@@ -42,7 +44,7 @@ remove-pie:
         cors: true
 
 rate-pie:
-  handler: src/rate.rate
+  handler: src/rate.handler
   events:
     - http:
         path: /pies/{id}/rate
@@ -50,7 +52,7 @@ rate-pie:
         cors: true
 
 photo-upload:
-  handler: src/photoUpload.photoUpload
+  handler: src/photoUpload.handler
   environment:
     PHOTO_BUCKET_NAME: ${self:custom.photo.bucket}
     PHOTO_UPLOAD_PATH: ${self:custom.photo.uploadPath}
@@ -61,7 +63,7 @@ photo-upload:
         cors: true
 
 photo-thumbnail:
-  handler: src/photoThumbnail.photoThumbnail
+  handler: src/photoThumbnail.handler
   environment:
     PHOTO_THUMBNAIL_PATH: ${self:custom.photo.thumbnailPath}
     PHOTO_THUMBNAIL_SIZE: ${self:custom.photo.thumbnailSize}
