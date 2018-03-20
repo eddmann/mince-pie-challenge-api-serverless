@@ -1,5 +1,5 @@
 build:
-	docker-compose run --rm serverless rm -fr node_modules && npm install
+	docker-compose run --rm serverless npm install
 
 test:
 	docker-compose run --rm serverless npm test

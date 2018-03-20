@@ -1,7 +1,12 @@
 version: '3'
+
 services:
   serverless:
     build: .
     env_file: .env
     volumes:
       - .:/opt/app
+      - app-modules:/opt/app/node_modules
+
+volumes:
+  app-modules:
