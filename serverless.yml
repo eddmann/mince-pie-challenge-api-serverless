@@ -2,7 +2,7 @@ service: mince-pie-challenge-api
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   stage: prod
   region: eu-west-1
   environment:
@@ -22,7 +22,11 @@ custom:
     thumbnailSize: '266x221'
 
   # plugins
-  webpackIncludeModules: true
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        - aws-sdk
   customDomain:
     domainName: 'api.mincepiechallenge.com'
     basePath: ''

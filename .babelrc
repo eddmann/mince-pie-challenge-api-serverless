@@ -1,4 +1,15 @@
 {
-  "presets": ["env"],
-  "plugins": ["transform-runtime", "transform-flow-comments"]
+  "comments": false,
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "8.10"
+        },
+        "shippedProposals": true
+      }
+    ]
+  ],
+  "plugins": ["transform-flow-comments"]
 }
