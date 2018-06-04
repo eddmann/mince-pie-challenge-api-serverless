@@ -10,7 +10,7 @@ export const createHandler: HandlerWithServices = handler => services => (event,
 export const optionalHttpAuthentication: OptionalUserHandlerMiddleware = handler => async params => {
   const { event, services } = params;
   const userId = event.headers.Authorization && (await services.getUserIdFromToken(event.headers.Authorization));
-  handler(Object.assign({}, params, { userId }));
+  await handler(Object.assign({}, params, { userId }));
 };
 
 export const strictHttpAuthentication: AuthenticatedUserHandlerMiddlware = handler => async params => {
@@ -22,5 +22,5 @@ export const strictHttpAuthentication: AuthenticatedUserHandlerMiddlware = handl
     return;
   }
 
-  handler(Object.assign({}, params, { userId }));
+  await handler(Object.assign({}, params, { userId }));
 };

@@ -20,7 +20,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "cognito-express": "^2.0.10",
+    "node-jose": "^1.0.0",
     "gm": "^1.23.1",
     "hal": "^1.2.0",
     "uuid": "^3.2.1"
