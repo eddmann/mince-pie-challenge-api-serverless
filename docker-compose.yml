@@ -2,11 +2,15 @@ version: '3'
 
 services:
   serverless:
-    build: .
+    build: .docker-serverless/
     env_file: .env
     volumes:
       - .:/opt/app
       - app-modules:/opt/app/node_modules
+  raml2html:
+    build: .docker-raml2html/
+    volumes:
+      - .:/opt/app
 
 volumes:
   app-modules:

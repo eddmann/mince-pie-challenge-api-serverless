@@ -1,0 +1,315 @@
+<!DOCTYPE HTML><html><head><title>mince-pie-challenge-api API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.1.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>mince-pie-challenge-api API documentation <small>version 1</small></h1><p>https://api.mincepiechallenge.com</p></div><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">/</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_"><span class="parent"></span>/</a> <span class="methods"><a href="#_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Provides available actions and Cognito authentication pool identifiers.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/</h4></div><div class="modal-body"><div class="alert alert-info"><p>Provides available actions and Cognito authentication pool identifiers.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "_links": {
+    "self": { "href": "/" },
+    "list": { "href": "/pies" },
+    "add": { "href": "/pies" },
+    "view": {
+      "href": "/pies/{id}",
+      "templated": true
+    }
+  },
+  "cognito": {
+    "poolId": "eu-west-1_BXXROsWOu",
+    "clientId": "3qf6pqo467hr1tcbm3kf5sn2v3"
+  },
+  "baseEndpointUrl": "https://api.mincepiechallenge.com"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies" class="panel-title">/pies</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies"><span class="parent"></span>/pies</a> <span class="methods"><a href="#pies_get"><span class="badge badge_get">get</span></a> <a href="#pies_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>List all available mince pie&#39;s in the challenge.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#pies_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Add a new mince pie to the challenge.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/pies</h4></div><div class="modal-body"><div class="alert alert-info"><p>List all available mince pie&#39;s in the challenge.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "_links": {
+    "self": { "href": "/pies" }
+  },
+  "_embedded": {
+    "pies": [
+      {
+        "_links": {
+          "self": { "href": "/pies/9d197f40" }
+        },
+        "id": "9d197f40",
+        "name": "Awesome Mince Pie",
+        "thumbnail": "http://s3.com/9d197f40.png",
+        "rating": {
+          "avg": 5,
+          "total": 1
+        }
+      }
+    ]
+  },
+  "total": 1
+}
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add a new mince pie to the challenge.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies_post_request" data-toggle="tab">Request</a></li><li><a href="#pies_post_response" data-toggle="tab">Response</a></li><li><a href="#pies_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "name": "Awesome Mince Pie"
+}
+</code></pre></div></div><div class="tab-pane" id="pies_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Headers</h3><ul><li><strong>Location</strong>: <em>required (string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>/pies/9d197f40</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "_links": {
+    "self": { "href": "/pies/9d197f40" },
+    "photo": { "href": "/pies/9d197f40/photo" }
+  },
+  "id": "9d197f40",
+  "name": "Awesome Mince Pie",
+  "addedAt": "2018-06-08T12:00:00.000Z",
+  "rating": {
+    "avg": 0,
+    "total": 0
+  }
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Bad Request",
+  "detail": "Invalid request body",
+  "errors": [
+    { "name": "name", "reason": "You must supply the pie&#39;s name." }
+  ]
+}
+</code></pre></div></div><div class="tab-pane" id="pies_post_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
+  "detail": "Service requires an authenticated user"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id_" class="panel-title">/pies/{id}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id_"><span class="parent"></span>/pies/{id}</a> <span class="methods"><a href="#pies__id__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#pies__id__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>View a specified mince pie.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#pies__id__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Remove a specified mince pie from the challenge.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>View a specified mince pie.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>optional-jwt</b><p>Optionally provide a valid JSON Web Token.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__get_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__get_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="pies__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "_links": {
+    "self": { "href": "/pies/9d197f40" },
+    "photo?": { "href": "/pies/9d197f40/photo" },
+    "rate?": { "href": "/pies/9d197f40/rate" },
+    "remove?": { "href": "/pies/9d197f40" }
+  },
+  "id": "9d197f40",
+  "name": "Awesome Mince Pie",
+  "addedAt": "2018-06-07T07:00:00.000Z",
+  "photo": "http://s3.com/original/9d197f40.png",
+  "thumbnail": "http://s3.com/9d197f40.png",
+  "rating": {
+    "avg": 0,
+    "total": 0
+  }
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Not Found",
+  "detail": "Unable to find the specified mince pie."
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__get_securedby"><h1>Secured by optional-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove a specified mince pie from the challenge.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__delete_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="pies__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Successfully deleted the mince pie.</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
+  "detail": "This mince pie does not belong to you."
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Not Found",
+  "detail": "Unable to find the specified mince pie."
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__delete_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
+  "detail": "Service requires an authenticated user"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id__rate" class="panel-title">/pies/{id}/rate</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id__rate"><span class="parent"></span>/pies/{id}/rate</a> <span class="methods"><a href="#pies__id__rate_put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id__rate" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__rate_put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Rate a specified mince pie.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__rate_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}/rate</h4></div><div class="modal-body"><div class="alert alert-info"><p>Rate a specified mince pie.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__rate_put_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__rate_put_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__rate_put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__rate_put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "rating": 5
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__rate_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Successfully rated the mince pie.</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Bad Request",
+  "detail": "Invalid request body",
+  "errors": [
+    { "name": "rating", "reason": "You must supply a valid pie rating." }
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Not Found",
+  "detail": "Unable to find the specified mince pie."
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__rate_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
+  "detail": "Service requires an authenticated user"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id__photo" class="panel-title">/pies/{id}/photo</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id__photo"><span class="parent"></span>/pies/{id}/photo</a> <span class="methods"><a href="#pies__id__photo_put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id__photo" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__photo_put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Request a new photo upload URL.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__photo_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}/photo</h4></div><div class="modal-body"><div class="alert alert-info"><p>Request a new photo upload URL.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__photo_put_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__photo_put_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__photo_put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__photo_put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "fileExtension": "jpg",
+  "contentType": "image/jpg"
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__photo_put_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Headers</h3><ul><li><strong>Location</strong>: <em>required (string)</em><p><strong>Example</strong>:</p><div class="examples"><pre><code>http://s3.com/upload/9d197f40</code></pre></div></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "_links": {
+    "self": { "href": "http://s3.com/upload/9d197f40" }
+  },
+  "url": "http://s3.com/upload/9d197f40"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Bad Request",
+  "detail": "Invalid request body",
+  "errors": [
+    { "name": "fileExtension", "reason": "You must supply the file extension." },
+    { "name": "contentType", "reason": "You must supply the content-type." }
+  ]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
+  "detail": "This mince pie does not belong to you."
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Not Found",
+  "detail": "Unable to find the specified mince pie."
+}
+</code></pre></div></div><div class="tab-pane" id="pies__id__photo_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
+  "detail": "Service requires an authenticated user"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#">/</a></li><li><a href="#pies">/pies</a></li><li><a href="#pies__id_">/pies/{id}</a></li><li><a href="#pies__id__rate">/pies/{id}/rate</a></li><li><a href="#pies__id__photo">/pies/{id}/photo</a></li></ul></div></div></div></div></body></html>

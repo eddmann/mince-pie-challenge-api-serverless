@@ -15,3 +15,6 @@ remove:
 
 shell:
 	docker-compose run --rm serverless bash
+
+raml2html:
+	docker-compose run --rm raml2html raml2html api.raml > api.html
