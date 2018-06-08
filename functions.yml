@@ -1,0 +1,10 @@
+hello:
+  handler: src/hello.handler
+  events:
+    - http:
+        path: /hello/{name}
+        method: get
+        request:
+            parameters:
+              paths:
+                name: true

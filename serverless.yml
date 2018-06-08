@@ -1,0 +1,27 @@
+service: mince-pie-challenge-api
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+  environment:
+    GREETING: "Hello"
+  # iamRoleStatements: ${file(./roles.yml)}
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        - aws-sdk
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
+resources: ${file(./resources.yml)}
+
+functions: ${file(./functions.yml)}
