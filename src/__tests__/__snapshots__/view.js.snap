@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays the photo action when no photo is present for your pie 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/1\\"},\\"rate\\":{\\"href\\":\\"/pies/1/rate\\"},\\"remove\\":{\\"href\\":\\"/pies/1\\"},\\"photo\\":{\\"href\\":\\"/pies/1/photo\\"}},\\"id\\":\\"1\\",\\"name\\":\\"Another Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0},\\"addedAt\\":\\"1970-01-18T16:30:17.691Z\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`displays the remove action when viewing your own pie 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/1\\"},\\"rate\\":{\\"href\\":\\"/pies/1/rate\\"},\\"remove\\":{\\"href\\":\\"/pies/1\\"}},\\"id\\":\\"1\\",\\"name\\":\\"Another Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0},\\"photo\\":\\"http://photo.url\\",\\"thumbnail\\":\\"http://thumbnail.url\\",\\"addedAt\\":\\"1970-01-18T16:30:17.691Z\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`views a users pie 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/1\\"}},\\"id\\":\\"1\\",\\"name\\":\\"Another Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0},\\"photo\\":\\"http://photo.url\\",\\"thumbnail\\":\\"http://thumbnail.url\\",\\"addedAt\\":\\"1970-01-18T16:30:17.691Z\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+  },
+  "statusCode": 200,
+}
+`;

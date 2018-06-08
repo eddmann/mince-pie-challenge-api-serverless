@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ensures only valid ratings are stored 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Bad Request\\",\\"detail\\":\\"Invalid request body\\",\\"errors\\":[{\\"name\\":\\"rating\\",\\"reason\\":\\"You must supply a valid pie rating.\\"}]}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 400,
+}
+`;
+
+exports[`requires an authenticated user 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Forbidden\\",\\"detail\\":\\"Service requires authenticated user\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 403,
+}
+`;

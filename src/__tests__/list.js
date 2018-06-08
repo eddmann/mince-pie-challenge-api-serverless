@@ -31,7 +31,7 @@ it('list mince pies', async () => {
   ];
 
   const services = {
-    db: { all: jest.fn(() => Promise.resolve(pies)) },
+    db: { all: () => Promise.resolve(pies) },
   };
 
   const callback = response();
