@@ -8,6 +8,7 @@
     "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-flow-comments": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "flow-aws-lambda": "^1.0.3",
     "flow-babel-webpack-plugin": "^1.1.1",

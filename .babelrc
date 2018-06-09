@@ -6,10 +6,9 @@
       {
         "targets": {
           "node": "8.10"
-        },
-        "shippedProposals": true
+        }
       }
     ]
   ],
-  "plugins": ["transform-flow-comments"]
+  "plugins": ["transform-flow-comments", "transform-object-rest-spread"]
 }

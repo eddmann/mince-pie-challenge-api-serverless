@@ -1,6 +1,9 @@
 build:
 	docker-compose run --rm serverless npm install
 
+webpack:
+	docker-compose run --rm serverless sls webpack -v
+
 test:
 	docker-compose run --rm serverless npm test
 
