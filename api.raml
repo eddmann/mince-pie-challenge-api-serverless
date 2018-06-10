@@ -27,13 +27,13 @@ securitySchemes:
           type: string
           required: true
       responses:
-        403:
+        401:
           body:
             application/problem+json:
               type: object
               example: |
                 {
-                  "title": "Forbidden",
+                  "title": "Unauthorized",
                   "detail": "Service requires an authenticated user"
                 }
 
@@ -84,7 +84,7 @@ securitySchemes:
                       },
                       "id": "9d197f40",
                       "name": "Awesome Mince Pie",
-                      "thumbnail": "http://s3.com/9d197f40.png",
+                      "thumbnail": "http://s3.com/9d197f40.jpg",
                       "rating": {
                         "avg": 5,
                         "total": 1
@@ -121,7 +121,7 @@ securitySchemes:
                 },
                 "id": "9d197f40",
                 "name": "Awesome Mince Pie",
-                "addedAt": "2018-06-08T12:00:00.000Z",
+                "addedAt": "2018-06-11T12:00:00.000Z",
                 "rating": {
                   "avg": 0,
                   "total": 0
@@ -159,9 +159,9 @@ securitySchemes:
                 },
                 "id": "9d197f40",
                 "name": "Awesome Mince Pie",
-                "addedAt": "2018-06-07T07:00:00.000Z",
-                "photo": "http://s3.com/original/9d197f40.png",
-                "thumbnail": "http://s3.com/9d197f40.png",
+                "addedAt": "2018-06-11T12:00:00.000Z",
+                "photo": "http://s3.com/original/9d197f40.jpg",
+                "thumbnail": "http://s3.com/9d197f40.jpg",
                 "rating": {
                   "avg": 0,
                   "total": 0
@@ -182,13 +182,13 @@ securitySchemes:
     responses:
       204:
         description: Successfully deleted the mince pie.
-      401:
+      403:
         body:
           application/problem+json:
             type: object
             example: |
               {
-                "title": "Unauthorized",
+                "title": "Forbidden",
                 "detail": "This mince pie does not belong to you."
               }
       404:
@@ -226,6 +226,15 @@ securitySchemes:
                 "errors": [
                   { "name": "rating", "reason": "You must supply a valid pie rating." }
                 ]
+              }
+      403:
+        body:
+          application/problem+json:
+            type: object
+            example: |
+              {
+                "title": "Forbidden",
+                "detail": "You have already rated this mince pie."
               }
       404:
         body:
@@ -278,15 +287,22 @@ securitySchemes:
                   { "name": "contentType", "reason": "You must supply the content-type." }
                 ]
               }
-      401:
+      403:
         body:
           application/problem+json:
             type: object
-            example: |
-              {
-                "title": "Unauthorized",
-                "detail": "This mince pie does not belong to you."
-              }
+            examples:
+              not-owner: |
+                {
+                  "title": "Forbidden",
+                  "detail": "This mince pie does not belong to you."
+                }
+              photo-present: |
+                {
+                  "title": "Forbidden",
+                  "detail": "This mince pie already has a photo."
+                }
+
       404:
         body:
           application/problem+json:

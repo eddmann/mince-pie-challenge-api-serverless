@@ -194,7 +194,7 @@
         },
         "id": "9d197f40",
         "name": "Awesome Mince Pie",
-        "thumbnail": "http://s3.com/9d197f40.png",
+        "thumbnail": "http://s3.com/9d197f40.jpg",
         "rating": {
           "avg": 5,
           "total": 1
@@ -214,7 +214,7 @@
   },
   "id": "9d197f40",
   "name": "Awesome Mince Pie",
-  "addedAt": "2018-06-08T12:00:00.000Z",
+  "addedAt": "2018-06-11T12:00:00.000Z",
   "rating": {
     "avg": 0,
     "total": 0
@@ -227,8 +227,8 @@
     { "name": "name", "reason": "You must supply the pie&#39;s name." }
   ]
 }
-</code></pre></div></div><div class="tab-pane" id="pies_post_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Forbidden",
+</code></pre></div></div><div class="tab-pane" id="pies_post_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
   "detail": "Service requires an authenticated user"
 }
 </code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id_" class="panel-title">/pies/{id}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id_"><span class="parent"></span>/pies/{id}</a> <span class="methods"><a href="#pies__id__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#pies__id__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>View a specified mince pie.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#pies__id__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Remove a specified mince pie from the challenge.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>View a specified mince pie.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>optional-jwt</b><p>Optionally provide a valid JSON Web Token.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__get_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__get_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="pies__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/hal+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
@@ -240,9 +240,9 @@
   },
   "id": "9d197f40",
   "name": "Awesome Mince Pie",
-  "addedAt": "2018-06-07T07:00:00.000Z",
-  "photo": "http://s3.com/original/9d197f40.png",
-  "thumbnail": "http://s3.com/9d197f40.png",
+  "addedAt": "2018-06-11T12:00:00.000Z",
+  "photo": "http://s3.com/original/9d197f40.jpg",
+  "thumbnail": "http://s3.com/9d197f40.jpg",
   "rating": {
     "avg": 0,
     "total": 0
@@ -252,16 +252,16 @@
   "title": "Not Found",
   "detail": "Unable to find the specified mince pie."
 }
-</code></pre></div></div><div class="tab-pane" id="pies__id__get_securedby"><h1>Secured by optional-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove a specified mince pie from the challenge.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__delete_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="pies__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Successfully deleted the mince pie.</p><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Unauthorized",
+</code></pre></div></div><div class="tab-pane" id="pies__id__get_securedby"><h1>Secured by optional-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>(string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Remove a specified mince pie from the challenge.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__delete_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="pies__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Successfully deleted the mince pie.</p><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
   "detail": "This mince pie does not belong to you."
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "title": "Not Found",
   "detail": "Unable to find the specified mince pie."
 }
-</code></pre></div></div><div class="tab-pane" id="pies__id__delete_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Forbidden",
+</code></pre></div></div><div class="tab-pane" id="pies__id__delete_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
   "detail": "Service requires an authenticated user"
 }
 </code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id__rate" class="panel-title">/pies/{id}/rate</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id__rate"><span class="parent"></span>/pies/{id}/rate</a> <span class="methods"><a href="#pies__id__rate_put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id__rate" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__rate_put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Rate a specified mince pie.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__rate_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}/rate</h4></div><div class="modal-body"><div class="alert alert-info"><p>Rate a specified mince pie.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__rate_put_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__rate_put_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__rate_put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__rate_put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
@@ -274,12 +274,16 @@
     { "name": "rating", "reason": "You must supply a valid pie rating." }
   ]
 }
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Forbidden",
+  "detail": "You have already rated this mince pie."
+}
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "title": "Not Found",
   "detail": "Unable to find the specified mince pie."
 }
-</code></pre></div></div><div class="tab-pane" id="pies__id__rate_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Forbidden",
+</code></pre></div></div><div class="tab-pane" id="pies__id__rate_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
   "detail": "Service requires an authenticated user"
 }
 </code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="pies__id__photo" class="panel-title">/pies/{id}/photo</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_pies__id__photo"><span class="parent"></span>/pies/{id}/photo</a> <span class="methods"><a href="#pies__id__photo_put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_pies__id__photo" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#pies__id__photo_put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Request a new photo upload URL.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="pies__id__photo_put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/pies/{id}/photo</h4></div><div class="modal-body"><div class="alert alert-info"><p>Request a new photo upload URL.</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>strict-jwt</b><p>Requires a valid JSON Web Token be provided.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#pies__id__photo_put_request" data-toggle="tab">Request</a></li><li><a href="#pies__id__photo_put_response" data-toggle="tab">Response</a></li><li><a href="#pies__id__photo_put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="pies__id__photo_put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
@@ -300,16 +304,20 @@
     { "name": "contentType", "reason": "You must supply the content-type." }
   ]
 }
-</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Unauthorized",
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>not-owner</strong>:<br></p><pre><code>{
+  "title": "Forbidden",
   "detail": "This mince pie does not belong to you."
+}
+</code></pre><p><strong>photo-present</strong>:<br></p><pre><code>{
+  "title": "Forbidden",
+  "detail": "This mince pie already has a photo."
 }
 </code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "title": "Not Found",
   "detail": "Unable to find the specified mince pie."
 }
-</code></pre></div></div><div class="tab-pane" id="pies__id__photo_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "title": "Forbidden",
+</code></pre></div></div><div class="tab-pane" id="pies__id__photo_put_securedby"><h1>Secured by strict-jwt</h1><h3>Headers</h3><ul><li><strong>Authorization</strong>: <em>required (string)</em><p>Used to send a JSON Web Token with the request.</p></li></ul><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/problem+json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "title": "Unauthorized",
   "detail": "Service requires an authenticated user"
 }
 </code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#">/</a></li><li><a href="#pies">/pies</a></li><li><a href="#pies__id_">/pies/{id}</a></li><li><a href="#pies__id__rate">/pies/{id}/rate</a></li><li><a href="#pies__id__photo">/pies/{id}/photo</a></li></ul></div></div></div></div></body></html>
