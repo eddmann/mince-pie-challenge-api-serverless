@@ -1,10 +1,20 @@
-hello:
-  handler: src/hello.handler
+public:
+  handler: src/auth.public_
   events:
     - http:
-        path: /hello/{name}
+        path: /public
         method: get
-        request:
-            parameters:
-              paths:
-                name: true
+
+optional:
+  handler: src/auth.optional
+  events:
+    - http:
+        path: /optional
+        method: get
+
+strict:
+  handler: src/auth.strict
+  events:
+    - http:
+        path: /strict
+        method: get

@@ -12,5 +12,7 @@
     "webpack": "^4.15.1",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-jose": "^1.0.0"
+  }
 }

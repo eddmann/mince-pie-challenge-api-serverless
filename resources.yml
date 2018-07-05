@@ -1,1 +1,36 @@
 Resources:
+  PieUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: ${file(./config.${self:provider.stage}.yml):userPoolName, ''}
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 6
+      AliasAttributes:
+        - email
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Mutable: false
+          Required: true
+
+  PieUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: ${file(./config.${self:provider.stage}.yml):userPoolClientName, ''}
+      ExplicitAuthFlows:
+        - ADMIN_NO_SRP_AUTH
+      GenerateSecret: false
+      UserPoolId:
+        Ref: PieUserPool
+
+Outputs:
+  PieUserPoolId:
+    Value:
+      Ref: PieUserPool
+
+  PieUserPoolClientId:
+    Value:
+      Ref: PieUserPoolClient

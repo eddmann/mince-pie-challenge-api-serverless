@@ -1,0 +1,4 @@
+userPoolName: 'dev-mince-pie-challenge-pool'
+userPoolId:
+  Ref: PieUserPool
+userPoolClientName: 'dev-mince-pie-challenge-client'

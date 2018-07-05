@@ -6,7 +6,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: eu-west-1
   environment:
-    GREETING: "Hello"
+    USER_POOL_ID: ${file(./config.${self:provider.stage}.yml):userPoolId}
   # iamRoleStatements: ${file(./roles.yml)}
 
 custom:
