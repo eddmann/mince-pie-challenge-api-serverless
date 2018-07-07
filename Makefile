@@ -7,5 +7,8 @@ build:
 deploy:
 	docker-compose run --rm serverless sls deploy -v --stage=dev
 
+flow:
+	docker-compose run --rm serverless npm run flow
+
 shell:
 	docker-compose run --rm serverless bash

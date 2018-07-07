@@ -1,4 +1,8 @@
-export const unauthorised = detail => ({
+// @flow
+
+import type { Response } from '../types';
+
+export const unauthorised = (detail: string): Response => ({
   statusCode: 401,
   headers: {
     'Access-Control-Allow-Origin': '*',

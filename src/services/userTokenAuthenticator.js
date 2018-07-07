@@ -1,3 +1,7 @@
+// @flow
+
+import type { UserTokenAuthenticator } from '../types';
+
 import https from 'https';
 import jose from 'node-jose';
 
@@ -44,7 +48,7 @@ const parseClaims = (token, key) =>
       return claims;
     });
 
-export default poolId => async token => {
+export default (poolId: string): UserTokenAuthenticator => async token => {
   try {
     const key = await fetchKey(poolId, token);
     const claims = await parseClaims(token, key);

@@ -3,16 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "aws-sdk": "^2.268.1",
+    "aws-sdk": "^2.269.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-aws-lambda": "^1.0.3",
+    "flow-babel-webpack-plugin": "^1.1.1",
+    "flow-bin": "^0.73.0",
     "serverless-webpack": "^5.1.5",
     "webpack": "^4.15.1",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "node-jose": "^1.0.0"
+  },
+  "scripts": {
+    "flow": "flow"
   }
 }

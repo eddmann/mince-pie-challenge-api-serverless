@@ -1,16 +1,28 @@
+// @flow
+
+import type { HandlerWithServices, OptionalUserHandlerMiddleware, AuthenticatedUserHandlerMiddlware } from '../types';
+
 import { unauthorised } from './http';
 
-export const createHandler = handler => services => (event, context) =>
+export const createHandler: HandlerWithServices = handler => services => (event, context) =>
   handler({ event, context, services });
 
-export const withOptionalHttpAuthentication = handler => async params => {
-  const { event, services } = params;
+export const withOptionalHttpAuthentication: OptionalUserHandlerMiddleware = handler => async ({
+  event,
+  context,
+  services,
+}) => {
   const userId = await services.getUserIdFromToken(event.headers.Authorization);
-  return handler({ ...params, userId });
+  return handler({ event, context, services, userId });
 };
 
-export const withStrictHttpAuthentication = handler => async params => {
-  const { event, services } = params;
+export const withStrictHttpAuthentication: AuthenticatedUserHandlerMiddlware = handler => async ({
+  event,
+  context,
+  services,
+}) => {
   const userId = await services.getUserIdFromToken(event.headers.Authorization);
-  return userId ? handler({ ...params, userId }) : unauthorised('Service requires an authenticated user');
+  return userId
+    ? handler({ event, context, services, userId })
+    : unauthorised('Service requires an authenticated user');
 };

@@ -1,6 +1,7 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
 const nodeExternals = require('webpack-node-externals');
+const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 
 module.exports = {
   entry: slsw.lib.entries,
@@ -10,6 +11,7 @@ module.exports = {
   performance: { hints: false },
   devtool: 'nosources-source-map',
   externals: [nodeExternals()],
+  plugins: [new FlowBabelWebpackPlugin()],
   module: {
     rules: [
       {
