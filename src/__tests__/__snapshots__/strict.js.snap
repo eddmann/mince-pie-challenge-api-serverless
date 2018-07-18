@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails to respond when access token not found 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Unauthorized\\",\\"detail\\":\\"Service requires an authenticated user\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 401,
+}
+`;
+
+exports[`successfully responds with a user id when access token found 1`] = `
+Object {
+  "body": "{\\"userId\\":\\"USER_ID\\"}",
+  "statusCode": 200,
+}
+`;

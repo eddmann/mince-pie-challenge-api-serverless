@@ -1,12 +1,9 @@
 // @flow
 
-import { createHandler, withOptionalHttpAuthentication, withStrictHttpAuthentication } from './helpers/handlers';
+import publicHandler from './handlers/public';
+import optionalHandler from './handlers/optional';
+import strictHandler from './handlers/strict';
 import createUserTokenAuthenticator from './services/userTokenAuthenticator';
-
-const handler = async ({ userId = 'N/A' }) => ({
-  statusCode: 200,
-  body: JSON.stringify({ userId }),
-});
 
 const { USER_POOL_ID } = process.env;
 
@@ -16,6 +13,6 @@ if (!USER_POOL_ID) {
 
 const getUserIdFromToken = createUserTokenAuthenticator(USER_POOL_ID);
 
-export const public_ = createHandler(handler)({});
-export const optional = createHandler(withOptionalHttpAuthentication(handler))({ getUserIdFromToken });
-export const strict = createHandler(withStrictHttpAuthentication(handler))({ getUserIdFromToken });
+export const public_ = publicHandler({});
+export const optional = optionalHandler({ getUserIdFromToken });
+export const strict = strictHandler({ getUserIdFromToken });
