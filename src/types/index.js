@@ -39,3 +39,8 @@ type UserHandlerMiddleware<T: Parameters> = ((T) => Promise<Response>) => Handle
 export type OptionalUserHandlerMiddleware = UserHandlerMiddleware<OptionalUserParameters>;
 
 export type AuthenticatedUserHandlerMiddlware = UserHandlerMiddleware<AuthenticatedUserParameters>;
+
+export type HALResource = {
+  _links: { [string]: any },
+  toJSON: () => {},
+};

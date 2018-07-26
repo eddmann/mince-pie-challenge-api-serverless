@@ -7,6 +7,14 @@ services:
     volumes:
       - .:/opt/app
       - app-modules:/opt/app/node_modules
+  serverless-offline:
+    build: .
+    env_file: .env
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/opt/app
+      - app-modules:/opt/app/node_modules
   aws-cli:
     image: mesosphere/aws-cli
     env_file: .env

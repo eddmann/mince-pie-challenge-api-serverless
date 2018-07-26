@@ -1,20 +1,10 @@
-public:
-  handler: src/auth.public_
+bootstrap:
+  handler: src/bootstrap.handler
+  environment:
+    USER_POOL_CLIENT_ID: ${file(./config.${self:provider.stage}.yml):userPoolClientId}
+    BASE_ENDPOINT_URL: ${file(./config.${self:provider.stage}.yml):baseEndpointUrl}
   events:
     - http:
-        path: /public
+        path: /
         method: get
-
-optional:
-  handler: src/auth.optional
-  events:
-    - http:
-        path: /optional
-        method: get
-
-strict:
-  handler: src/auth.strict
-  events:
-    - http:
-        path: /strict
-        method: get
+        cors: true

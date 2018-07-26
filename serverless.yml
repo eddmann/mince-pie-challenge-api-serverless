@@ -3,7 +3,7 @@ service: mince-pie-challenge-api
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, 'offline'}
   region: eu-west-1
   environment:
     USER_POOL_ID: ${file(./config.${self:provider.stage}.yml):userPoolId}
@@ -15,9 +15,13 @@ custom:
     includeModules:
       forceExclude:
         - aws-sdk
+  serverless-offline:
+    host: 0.0.0.0
+    port: 3000
 
 plugins:
   - serverless-webpack
+  - serverless-offline
 
 package:
   individually: true

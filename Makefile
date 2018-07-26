@@ -13,5 +13,8 @@ flow:
 test:
 	docker-compose run --rm serverless npm test
 
+offline:
+	docker-compose run --service-ports --rm serverless-offline sls offline --stage=offline
+
 shell:
 	docker-compose run --rm serverless bash
