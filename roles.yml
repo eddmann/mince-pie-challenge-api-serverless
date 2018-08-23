@@ -1,0 +1,4 @@
+- Effect: Allow
+  Action:
+    - dynamodb:*
+  Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${file(./config.${self:provider.stage}.yml):tableName}'

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lists mince pies 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies\\"}},\\"_embedded\\":{\\"pies\\":[{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/1\\"}},\\"id\\":\\"1\\",\\"name\\":\\"Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0}},{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/2\\"}},\\"id\\":\\"2\\",\\"name\\":\\"Another Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0}}]},\\"total\\":2}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+  },
+  "statusCode": 200,
+}
+`;

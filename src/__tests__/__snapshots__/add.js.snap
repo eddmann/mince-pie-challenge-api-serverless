@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds a new mince pie 1`] = `
+Object {
+  "body": "{\\"_links\\":{\\"self\\":{\\"href\\":\\"/pies/123456\\"},\\"photo\\":{\\"href\\":\\"/pies/123456/photo\\"}},\\"id\\":\\"123456\\",\\"name\\":\\"Mince Pie\\",\\"rating\\":{\\"avg\\":0,\\"total\\":0},\\"addedAt\\":\\"1970-01-01T03:25:45.678Z\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/hal+json",
+    "Location": "/pies/123456",
+  },
+  "statusCode": 201,
+}
+`;
+
+exports[`requires a pie name 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Bad Request\\",\\"detail\\":\\"Invalid request body\\",\\"errors\\":[{\\"name\\":\\"name\\",\\"reason\\":\\"You must supply the pie's name.\\"}]}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 400,
+}
+`;
+
+exports[`requires an authenticated user 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Unauthorized\\",\\"detail\\":\\"Service requires an authenticated user\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 401,
+}
+`;

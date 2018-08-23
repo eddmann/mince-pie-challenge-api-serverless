@@ -15,12 +15,14 @@
     "jest": "^23.1.0",
     "serverless-offline": "^3.25.6",
     "serverless-webpack": "^5.2.0",
+    "serverless-dynamodb-local": "^0.2.30",
     "webpack": "^4.16.2",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "hal": "^1.2.0",
     "node-jose": "^1.0.0",
-    "hal": "^1.2.0"
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "flow": "flow",
@@ -28,7 +30,7 @@
   },
   "jest": {
     "rootDir": "./src",
-    "cacheDirectory": "./node_modules/.cache/jest",
+    "cacheDirectory": "../node_modules/.cache/jest",
     "setupFiles": ["./jestSetup.js"]
   }
 }

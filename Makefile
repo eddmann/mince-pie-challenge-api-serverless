@@ -14,6 +14,8 @@ test:
 	docker-compose run --rm serverless npm test
 
 offline:
+	docker-compose rm -sf dynamodb && \
+	docker-compose run --rm serverless-offline sls dynamodb migrate --stage=offline && \
 	docker-compose run --service-ports --rm serverless-offline sls offline --stage=offline
 
 shell:

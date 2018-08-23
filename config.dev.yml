@@ -5,3 +5,4 @@ userPoolId:
 userPoolClientName: 'dev-mince-pie-challenge-client'
 userPoolClientId:
   Ref: PieUserPoolClient
+tableName: 'dev-mince-pie-challenge'

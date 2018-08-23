@@ -6,7 +6,7 @@ export type Response = ProxyResult;
 
 type Token = string;
 
-type UserId = string;
+export type UserId = string;
 
 export type UserTokenAuthenticator = Token => Promise<?UserId>;
 
@@ -43,4 +43,20 @@ export type AuthenticatedUserHandlerMiddlware = UserHandlerMiddleware<Authentica
 export type HALResource = {
   _links: { [string]: any },
   toJSON: () => {},
+};
+
+type URL = string;
+
+type UUID = string;
+
+export type Pie = {
+  Id: UUID,
+  UserId: UserId,
+  Name: string,
+  TotalRatings: number,
+  AvgRating: number,
+  Ratings: { [UserId]: number },
+  PhotoUrl: ?URL,
+  ThumbnailUrl: ?URL,
+  AddedAt: number,
 };

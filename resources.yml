@@ -26,6 +26,20 @@ Resources:
       UserPoolId:
         Ref: PieUserPool
 
+  PieTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${file(./config.${self:provider.stage}.yml):tableName}
+      AttributeDefinitions:
+        - AttributeName: Id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: Id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
 Outputs:
   PieUserPoolId:
     Value:
@@ -34,3 +48,7 @@ Outputs:
   PieUserPoolClientId:
     Value:
       Ref: PieUserPoolClient
+
+  PieTableName:
+    Value:
+      Ref: PieTable

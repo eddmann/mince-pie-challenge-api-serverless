@@ -8,3 +8,19 @@ bootstrap:
         path: /
         method: get
         cors: true
+
+list-pies:
+  handler: src/list.handler
+  events:
+    - http:
+        path: /pies
+        method: get
+        cors: true
+
+add-pie:
+  handler: src/add.handler
+  events:
+    - http:
+        path: /pies
+        method: post
+        cors: true

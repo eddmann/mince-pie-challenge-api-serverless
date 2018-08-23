@@ -15,6 +15,12 @@ services:
     volumes:
       - .:/opt/app
       - app-modules:/opt/app/node_modules
+    links:
+      - dynamodb
+  dynamodb:
+    image: ccabreraruiz/dynamodb-local
+    ports:
+      - 8000:8000
   aws-cli:
     image: mesosphere/aws-cli
     env_file: .env

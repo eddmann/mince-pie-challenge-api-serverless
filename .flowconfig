@@ -7,5 +7,7 @@
 [lints]
 
 [options]
+module.name_mapper='^db$' -> '<PROJECT_ROOT>/src/services/dynamoDBPieStore'
+module.name_mapper='^userTokenAuthenticator$' -> '<PROJECT_ROOT>/src/services/cognitoUserTokenAuthenticator'
 
 [strict]
