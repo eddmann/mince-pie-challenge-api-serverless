@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`removes the users pie 1`] = `
+Object {
+  "body": "",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+  },
+  "statusCode": 204,
+}
+`;
+
+exports[`requires a pie to be present 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Not Found\\",\\"detail\\":\\"Unable to find the specified mince pie.\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 404,
+}
+`;
+
+exports[`requires an authenticated user 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Unauthorized\\",\\"detail\\":\\"Service requires an authenticated user\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 401,
+}
+`;
+
+exports[`requires the user to own the pie 1`] = `
+Object {
+  "body": "{\\"title\\":\\"Forbidden\\",\\"detail\\":\\"This mince pie does not belong to you.\\"}",
+  "headers": Object {
+    "Access-Control-Allow-Credentials": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/problem+json",
+  },
+  "statusCode": 403,
+}
+`;

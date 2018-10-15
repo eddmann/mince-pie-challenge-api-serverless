@@ -24,3 +24,19 @@ add-pie:
         path: /pies
         method: post
         cors: true
+
+view-pie:
+  handler: src/view.handler
+  events:
+    - http:
+        path: /pies/{id}
+        method: get
+        cors: true
+
+remove-pie:
+  handler: src/remove.handler
+  events:
+    - http:
+        path: /pies/{id}
+        method: delete
+        cors: true

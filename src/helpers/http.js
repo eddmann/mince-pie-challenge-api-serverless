@@ -23,14 +23,10 @@ export const created = (resource: HALResource): Response => ({
   body: JSON.stringify(resource.toJSON()),
 });
 
-export const unauthorised = (detail: string): Response => ({
-  statusCode: 401,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': '*',
-    'Content-Type': 'application/problem+json',
-  },
-  body: JSON.stringify({ title: 'Unauthorized', detail }),
+export const noContent = (): Response => ({
+  statusCode: 204,
+  headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': '*' },
+  body: '',
 });
 
 export const badRequest = (detail: string, errors: Array<{ name: string, reason: string }>): Response => ({
@@ -41,6 +37,36 @@ export const badRequest = (detail: string, errors: Array<{ name: string, reason:
     'Content-Type': 'application/problem+json',
   },
   body: JSON.stringify({ title: 'Bad Request', detail, errors }),
+});
+
+export const unauthorised = (detail: string): Response => ({
+  statusCode: 401,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': '*',
+    'Content-Type': 'application/problem+json',
+  },
+  body: JSON.stringify({ title: 'Unauthorized', detail }),
+});
+
+export const forbidden = (detail: string): Response => ({
+  statusCode: 403,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': '*',
+    'Content-Type': 'application/problem+json',
+  },
+  body: JSON.stringify({ title: 'Forbidden', detail }),
+});
+
+export const notFound = (detail: string): Response => ({
+  statusCode: 404,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': '*',
+    'Content-Type': 'application/problem+json',
+  },
+  body: JSON.stringify({ title: 'Not Found', detail }),
 });
 
 export const json = (input: ?string): { [string]: any } => {

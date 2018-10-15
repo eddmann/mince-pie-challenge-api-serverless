@@ -1,6 +1,6 @@
 // @flow
 
-import type { Pie, UserId } from '../types';
+import type { Pie, UUID, UserId } from '../types';
 
 import uuid from 'uuid/v4';
 import AWS from 'aws-sdk';
@@ -31,3 +31,12 @@ export const addPie = (tableName: string) => (userId: UserId, name: string): Pro
     .promise()
     .then(() => pie);
 };
+
+export const getPie = (tableName: string) => (id: UUID): Promise<Pie> =>
+  new AWS.DynamoDB.DocumentClient(config)
+    .get({ TableName: tableName, Key: { Id: id } })
+    .promise()
+    .then(r => r.Item);
+
+export const removePie = (tableName: string) => (id: UUID): Promise<void> =>
+  new AWS.DynamoDB.DocumentClient(config).delete({ TableName: tableName, Key: { Id: id } }).promise();

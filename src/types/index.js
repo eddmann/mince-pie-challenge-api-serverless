@@ -47,7 +47,7 @@ export type HALResource = {
 
 type URL = string;
 
-type UUID = string;
+export type UUID = string;
 
 export type Pie = {
   Id: UUID,
